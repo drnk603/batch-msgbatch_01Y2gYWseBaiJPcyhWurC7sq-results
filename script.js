@@ -15,9 +15,9 @@
   };
 
   const REGEX = {
-    email: /^[^s@]+@[^s@]+.[^s@]+$/,
-    phone: /^[+-ds()]{10,20}$/,
-    name: /^[a-zA-ZÀ-ÿs'-]{2,50}$/,
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    phone: /^[+\-\d\s()]{10,20}$/,
+    name: /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/,
     message: /^.{10,}$/
   };
 
@@ -434,7 +434,7 @@
 
       counters.forEach(counter => {
         const text = counter.textContent;
-        const match = text.match(/(d+)/);
+        const match = text.match(/(\d+)/);
 
         if (match) {
           const target = parseInt(match[1]);
@@ -471,7 +471,7 @@
           clearInterval(timer);
         }
 
-        const newText = originalText.replace(/d+/, Math.floor(current));
+        const newText = originalText.replace(/\d+/, Math.floor(current));
         element.textContent = newText;
       }, duration / steps);
     }
